@@ -1,10 +1,12 @@
 import React from "react";
+import NumberBoard from "./components/NumberBoard";
+
 import "./App.css";
 
 const App = () => {
   return (
     <div className="app">
-      <p>Hello</p>
+      <NumberBoard />
     </div>
   );
 };
