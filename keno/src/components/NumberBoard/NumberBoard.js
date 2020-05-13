@@ -41,6 +41,10 @@ const useStyles = createUseStyles({
     margin: "0 auto",
     padding: "0 1rem",
   },
+  messageWrapper: {
+    composes: ["$luckyWrapper", "message-text"],
+    marginBottom: "1rem",
+  },
   luckyItem: {
     margin: "0.5rem",
   },
@@ -53,6 +57,7 @@ const useStyles = createUseStyles({
 const NumberBoard = ({ settings }) => {
   const [selected, setSelected] = useState({});
   const [stake, setStake] = useState();
+  const [message, setMessage] = useState("");
 
   const classes = useStyles();
 
@@ -81,11 +86,33 @@ const NumberBoard = ({ settings }) => {
   const handleClearBoardClick = () => {
     setStake();
     setSelected({});
+    setMessage("");
   };
 
   const handleLuckyPickClick = () => {};
 
-  const handlePlaceBetClick = () => {};
+  const announceWin = () => {
+    setMessage("You are a winner !!!");
+  };
+
+  const handlePlaceBetClick = () => {
+    const numbersPicked = Object.keys(selected) || [];
+    if (numbersPicked.length > 5) {
+      setMessage("You may only pick 5 numbers");
+      return;
+    }
+    if (numbersPicked.length === 0) {
+      setMessage("You must pick at last one number");
+      return;
+    }
+    if (!stake) {
+      setMessage("You need to set a stake");
+      return;
+    }
+    announceWin();
+    setStake();
+    setSelected({});
+  };
 
   return (
     <>
@@ -108,6 +135,7 @@ const NumberBoard = ({ settings }) => {
           );
         })}
       </div>
+      {message && <div className={classes.messageWrapper}>{message}</div>}
       <div className={classes.stakeWrapper}>
         {settings.popularStakes.length > 1 &&
           settings.popularStakes.map((value, index) => {

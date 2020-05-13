@@ -48,3 +48,8 @@ body .red-text {
   background-color: #dd1e2f;
   padding: 1rem;
 }
+
+body .message-text {
+  font-size: 2rem;
+  font-weight: bold;
+}
