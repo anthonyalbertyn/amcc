@@ -1,6 +1,7 @@
 import React from "react";
 import NumberBoard from "./components/NumberBoard";
 import { createUseStyles } from "react-jss";
+import "antd/dist/antd.css";
 
 const useStyles = createUseStyles({
   heading: {

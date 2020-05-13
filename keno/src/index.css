@@ -37,6 +37,10 @@ body .number-block {
   background-color: #dd1e2f;
 }
 
+body .red-text {
+  color: #dd1e2f;
+}
+
 .banner-text {
   font-family: "Exo 2";
   line-height: 1;
