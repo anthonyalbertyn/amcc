@@ -12,6 +12,7 @@ const useStyles = createUseStyles({
     alignItems: "center",
     "&:hover": {
       cursor: "pointer",
+      backgroundColor: "#218559",
     },
   },
   numberItemRed: {
@@ -29,7 +30,13 @@ const useStyles = createUseStyles({
   },
 });
 
-const NumberItem = ({ id, label, color, isActive, onClick = () => {} }) => {
+const NumberItem = ({
+  id,
+  label,
+  color,
+  isActive,
+  onClickCallback = () => {},
+}) => {
   const classes = useStyles();
 
   let numberItemClass =
@@ -39,12 +46,12 @@ const NumberItem = ({ id, label, color, isActive, onClick = () => {} }) => {
     numberItemClass = classes.numberItemActive;
   }
 
-  const handleClick = () => {
-    onClick(id);
+  const handleClick = (id) => {
+    onClickCallback(id);
   };
 
   return (
-    <div onClick={handleClick} className={numberItemClass} id={id}>
+    <div onClick={() => handleClick(id)} className={numberItemClass} id={id}>
       <div className={classes.numberItemLabel}>{label}</div>
     </div>
   );

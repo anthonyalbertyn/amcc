@@ -17,6 +17,7 @@ code {
 .number-block {
   color: white;
   font-size: 2.5rem;
+  border: 1px solid white;
 }
 
 body .number-block {
@@ -34,4 +35,12 @@ body .number-block {
 
 .red-block {
   background-color: #dd1e2f;
+}
+
+.banner-text {
+  font-family: "Exo 2";
+  line-height: 1;
+  font-size: 2.5rem;
+  background-color: #dd1e2f;
+  padding: 1rem;
 }
