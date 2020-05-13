@@ -10,7 +10,7 @@ const NumberBoard = ({ settings }) => {
   return (
     <>
       <p>{message}</p>
-      <NumberItem />
+      <NumberItem id={1} color="red" label="1" isActive={true} />
       {console.log(settings.popularStakes)}
     </>
   );
