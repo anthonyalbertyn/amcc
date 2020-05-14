@@ -25,6 +25,12 @@ have created some actions and reducers to handle that. See keno/src/data folder 
 This project has not been checked cross-browser so for best
 results use a modern version of Chrome.
 
+## Improvements that can be made
+
+With more time, I would refactor the CSS (react-jss) to reduce duplication and move some of the functions out of NumberBoard
+component into utility functions. I would also consider setting
+up a theme and defining primary, secondary and tertiary brand colours.
+
 ## Start the project
 
 cd keno
