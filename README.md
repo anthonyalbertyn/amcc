@@ -13,6 +13,15 @@ See document in /brief directory for more details.
 
 This project was built on create-react-app with React and JavaScript.
 
+For state management for the Number Board, I used useState hook,
+as that is most appropriate. The state does not need to be shared
+across multiple components, so Redux is not right for it.
+
+I have setup Redux with reducers and some action creators to demonstrate my understanding of Redux. I have used Redux in this
+project only to keep the most popular stake button information as that will probably come from a server. Given more time, I would have
+liked to use Redux to track some analytics and successful plays. I
+have created some actions and reducers to handle that. See keno/src/data folder for more information.
+
 This project has not been checked cross-browser so for best
 results use a modern version of Chrome.
 
