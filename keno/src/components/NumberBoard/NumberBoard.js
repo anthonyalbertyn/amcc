@@ -72,6 +72,32 @@ const NumberBoard = ({ settings }) => {
       selectedNew[keyString] = true;
     }
     setSelected(selectedNew);
+    if (message) {
+      setMessage("");
+    }
+  };
+
+  const pickRandomNumber = () => {
+    const min = 1;
+    const max = 80;
+    return min + Math.random() * (max - min);
+  };
+
+  const generateLuckyPickNumbers = () => {
+    const numbers = [];
+    const pickNumber = () => {
+      if (numbers.length < 5) {
+        const randomNumber = Math.round(pickRandomNumber());
+        if (!numbers.includes(randomNumber)) {
+          numbers.push(randomNumber);
+        }
+        pickNumber();
+      } else {
+        return;
+      }
+    };
+    pickNumber();
+    return numbers;
   };
 
   const handleStakeChange = (value) => {
@@ -89,10 +115,31 @@ const NumberBoard = ({ settings }) => {
     setMessage("");
   };
 
-  const handleLuckyPickClick = () => {};
+  const handleLuckyPickClick = () => {
+    const numbers = generateLuckyPickNumbers();
+    const selectedNew = {};
+    numbers.forEach((item) => {
+      const key = item.toString();
+      selectedNew[key] = true;
+    });
+    setSelected(selectedNew);
+    if (message) {
+      setMessage("");
+    }
+  };
 
   const announceWin = () => {
     setMessage("You are a winner !!!");
+  };
+
+  // idea behind this function, credit to:
+  // https://stackoverflow.com/questions/17369098/simplest-way-of-getting-the-number-of-decimals-in-a-number-in-javascript
+  const numberOfDecimalPlaces = (number) => {
+    let numberDecimals = 0;
+    if (Math.floor(number) !== number) {
+      numberDecimals = number.toString().split(".")[1].length || 0;
+    }
+    return numberDecimals;
   };
 
   const handlePlaceBetClick = () => {
@@ -107,6 +154,10 @@ const NumberBoard = ({ settings }) => {
     }
     if (!stake) {
       setMessage("You need to set a stake");
+      return;
+    }
+    if (numberOfDecimalPlaces(parseFloat(stake)) > 2) {
+      setMessage("Stake value may not exceed two decimal places");
       return;
     }
     announceWin();
