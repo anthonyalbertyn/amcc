@@ -149,7 +149,7 @@ const NumberBoard = ({ settings }) => {
       return;
     }
     if (numbersPicked.length === 0) {
-      setMessage("You must pick at last one number");
+      setMessage("You must pick at least one number");
       return;
     }
     if (!stake) {
